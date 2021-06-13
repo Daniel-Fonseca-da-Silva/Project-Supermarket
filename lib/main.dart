@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './models/transaction.dart';
 
 main() => runApp(new Supermarket());
 
@@ -14,9 +15,26 @@ class Supermarket extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    
+    // Variables
+    final _transactions = {
+
+      // Calling constructor of transaction
+      Transaction(id: 'p1',
+       name: 'Rice',
+       value: 20.99,
+       date: DateTime.now()),
+
+      Transaction(id: 'p2',
+       name: 'Been',
+       value: 10.99,
+       date: DateTime.now())
+    };
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Shopping for your day'),
+        backgroundColor: Colors.red[400],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -24,14 +42,11 @@ class MyHomePage extends StatelessWidget {
         children: [
           Container(
             child: Card(
-              color: Colors.limeAccent[100],
-              child: Text('Date'),
-              elevation: 5
-            ),
+                color: Colors.limeAccent[100],
+                child: Text('Date'),
+                elevation: 5),
           ),
-          Card(
-            child: Text('List of products')
-          )
+          Card(child: Text('List of products'))
         ],
       ),
     );
