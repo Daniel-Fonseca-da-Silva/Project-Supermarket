@@ -19,9 +19,10 @@ class MyHomePage extends StatelessWidget {
         title: Text('Shopping for your day'),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
-            width: double.infinity,
             child: Card(
               color: Colors.limeAccent[100],
               child: Text('Date'),
