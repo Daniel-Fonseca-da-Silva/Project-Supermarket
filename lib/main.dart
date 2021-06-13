@@ -18,8 +18,20 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Shopping for your day'),
       ),
-      body: Center(
-        child: Text('First version'),
+      body: Column(
+        children: [
+          Container(
+            width: double.infinity,
+            child: Card(
+              color: Colors.limeAccent[100],
+              child: Text('Date'),
+              elevation: 5
+            ),
+          ),
+          Card(
+            child: Text('List of products')
+          )
+        ],
       ),
     );
   }
