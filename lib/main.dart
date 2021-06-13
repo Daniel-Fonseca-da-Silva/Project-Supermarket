@@ -13,24 +13,18 @@ class Supermarket extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+
+  // Variables
+  final _transactions = {
+
+    // Calling constructor of transaction
+    Transaction(id: 'p1', name: 'Rice', value: 20.99, date: DateTime.now()),
+
+    Transaction(id: 'p2', name: 'Been', value: 10.99, date: DateTime.now())
+  };
+
   @override
   Widget build(BuildContext context) {
-    
-    // Variables
-    final _transactions = {
-
-      // Calling constructor of transaction
-      Transaction(id: 'p1',
-       name: 'Rice',
-       value: 20.99,
-       date: DateTime.now()),
-
-      Transaction(id: 'p2',
-       name: 'Been',
-       value: 10.99,
-       date: DateTime.now())
-    };
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Shopping for your day'),
@@ -46,7 +40,13 @@ class MyHomePage extends StatelessWidget {
                 child: Text('Date'),
                 elevation: 5),
           ),
-          Card(child: Text('List of products'))
+          Column(
+            children: _transactions.map((tr) {
+              return Card(
+                child: Text(tr.name)
+              );
+            }).toList(),
+          )
         ],
       ),
     );
