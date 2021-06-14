@@ -24,39 +24,39 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Shopping for your day'),
-        backgroundColor: Colors.red[400],
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
-            child: Card(
-                color: Colors.limeAccent[100],
-                child: Text('Date'),
-                elevation: 5),
-          ),
-          Column(
-            children: _transactions.map((tr) {
-              // Converte transaction to map
-              return Card(
-                child: Row(
-                  children: [
-                    Container(
-                      child: Text(tr.value.toString()),
-                    ),
-                    Column(
-                      children: [Text(tr.name), Text(tr.date.toString())],
-                    )
-                  ]
-                )
-              );
-            }).toList(),
-          )
-        ],
-      )
-    );
+        appBar: AppBar(
+          title: Text('Shopping for your day'),
+          backgroundColor: Colors.red[400],
+        ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              child: Card(
+                  color: Colors.limeAccent[100],
+                  child: Text('Date'),
+                  elevation: 5),
+            ),
+            Column(
+              children: _transactions.map((tr) {
+                // Converte transaction to map
+                return Card(
+                    child: Row(children: [
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.redAccent, width: 2)),
+                    padding: EdgeInsets.all(10),
+                    child: Text(tr.value.toString()),
+                  ),
+                  Column(
+                    children: [Text(tr.name), Text(tr.date.toString())],
+                  )
+                ]));
+              }).toList(),
+            )
+          ],
+        ));
   }
 }
