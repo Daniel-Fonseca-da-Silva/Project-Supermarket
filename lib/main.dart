@@ -13,12 +13,17 @@ class Supermarket extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+
   // Variables
+
+  final nameController = TextEditingController();
+  final priceController = TextEditingController();
+
   final _transactions = {
     // Calling constructor of transaction
-    Transaction(id: 'p1', name: 'Rice', value: 20.99, date: DateTime.now()),
+    Transaction(id: 'p1', name: 'Rice', price: 20.99, date: DateTime.now()),
 
-    Transaction(id: 'p2', name: 'Been', value: 10.99, date: DateTime.now())
+    Transaction(id: 'p2', name: 'Been', price: 10.99, date: DateTime.now())
   };
 
   @override
@@ -48,7 +53,7 @@ class MyHomePage extends StatelessWidget {
                           border:
                               Border.all(color: Colors.redAccent, width: 2)),
                       padding: EdgeInsets.all(10),
-                      child: Text('\$ ${tr.value.toStringAsFixed(2)}',
+                      child: Text('\$ ${tr.price.toStringAsFixed(2)}',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
@@ -82,8 +87,11 @@ class MyHomePage extends StatelessWidget {
                     child: Column(
                       children: [
                         TextField(
+                            controller: nameController,
                             decoration: InputDecoration(labelText: 'Name')),
-                        TextField(decoration: InputDecoration(labelText: '\$')),
+                        TextField(
+                          controller: priceController,
+                          decoration: InputDecoration(labelText: '\$')),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
@@ -92,7 +100,10 @@ class MyHomePage extends StatelessWidget {
                                   style: ElevatedButton.styleFrom(
                                     primary: Colors.orange,
                                   ),
-                                  onPressed: () {})
+                                  onPressed: () {
+                                    print(nameController.text);
+                                    print(priceController.text);
+                                  })
                             ])
                       ],
                     )),
