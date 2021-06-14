@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './models/transaction.dart';
+import 'package:supermarket/components/transaction_user.dart';
 
 main() => runApp(new Supermarket());
 
@@ -13,19 +13,6 @@ class Supermarket extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-
-  // Variables
-
-  final nameController = TextEditingController();
-  final priceController = TextEditingController();
-
-  final _transactions = {
-    // Calling constructor of transaction
-    Transaction(id: 'p1', name: 'Rice', price: 20.99, date: DateTime.now()),
-
-    Transaction(id: 'p2', name: 'Been', price: 10.99, date: DateTime.now())
-  };
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,81 +20,11 @@ class MyHomePage extends StatelessWidget {
           title: Text('Shopping for your day'),
           backgroundColor: Colors.red[400],
         ),
-        body: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Container(
-                child: Card(
-                    color: Colors.white60, child: Text('Date'), elevation: 5),
-              ),
-              Column(
-                children: _transactions.map((tr) {
-                  // Convert transaction to map
-                  return Card(
-                      child: Row(children: [
-                    Container(
-                      margin:
-                          EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-                      decoration: BoxDecoration(
-                          border:
-                              Border.all(color: Colors.redAccent, width: 2)),
-                      padding: EdgeInsets.all(10),
-                      child: Text('\$ ${tr.price.toStringAsFixed(2)}',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                              color: Colors.orange)),
-                    ),
-                    Column(
-                      children: [
-                        Text(
-                          tr.name,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                              color: Colors.red),
-                        ),
-                        Text(
-                          tr.date.toString().substring(0, 16),
-                          style: TextStyle(
-                              fontStyle: FontStyle.italic,
-                              fontSize: 14,
-                              color: Colors.grey),
-                        )
-                      ],
-                    )
-                  ]));
-                }).toList(),
-              ),
-              Card(
-                elevation: 5,
-                child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Column(
-                      children: [
-                        TextField(
-                            controller: nameController,
-                            decoration: InputDecoration(labelText: 'Name')),
-                        TextField(
-                          controller: priceController,
-                          decoration: InputDecoration(labelText: '\$')),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              ElevatedButton(
-                                  child: Text('Add product'),
-                                  style: ElevatedButton.styleFrom(
-                                    primary: Colors.orange,
-                                  ),
-                                  onPressed: () {
-                                    print(nameController.text);
-                                    print(priceController.text);
-                                  })
-                            ])
-                      ],
-                    )),
-              )
-            ]));
+        body: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+          Container(
+              child: Card(
+                  color: Colors.blue, child: Text('Gráfico'), elevation: 5)),
+          TransactionUser()
+        ]));
   }
 }
