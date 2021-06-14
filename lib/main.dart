@@ -29,54 +29,74 @@ class MyHomePage extends StatelessWidget {
           backgroundColor: Colors.red[400],
         ),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(
-              child: Card(
-                  color: Colors.white60,
-                  child: Text('Date'),
-                  elevation: 5),
-            ),
-            Column(
-              children: _transactions.map((tr) {
-                // Convert transaction to map
-                return Card(
-                    child: Row(children: [
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.redAccent, width: 2)),
-                    padding: EdgeInsets.all(10),
-                    child: Text(
-                      '\$ ${tr.value.toStringAsFixed(2)}',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: Colors.orange)),
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        tr.name,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: Colors.red),
-                      ),
-                      Text(
-                        tr.date.toString().substring(0,16),
-                        style: TextStyle(
-                            fontStyle: FontStyle.italic,
-                            fontSize: 14,
-                            color: Colors.grey),
-                      )
-                    ],
-                  )
-                ]));
-              }).toList(),
-            )
-          ],
-        ));
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
+                child: Card(
+                    color: Colors.white60, child: Text('Date'), elevation: 5),
+              ),
+              Column(
+                children: _transactions.map((tr) {
+                  // Convert transaction to map
+                  return Card(
+                      child: Row(children: [
+                    Container(
+                      margin:
+                          EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+                      decoration: BoxDecoration(
+                          border:
+                              Border.all(color: Colors.redAccent, width: 2)),
+                      padding: EdgeInsets.all(10),
+                      child: Text('\$ ${tr.value.toStringAsFixed(2)}',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: Colors.orange)),
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          tr.name,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: Colors.red),
+                        ),
+                        Text(
+                          tr.date.toString().substring(0, 16),
+                          style: TextStyle(
+                              fontStyle: FontStyle.italic,
+                              fontSize: 14,
+                              color: Colors.grey),
+                        )
+                      ],
+                    )
+                  ]));
+                }).toList(),
+              ),
+              Card(
+                elevation: 5,
+                child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Column(
+                      children: [
+                        TextField(
+                            decoration: InputDecoration(labelText: 'Name')),
+                        TextField(decoration: InputDecoration(labelText: '\$')),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              ElevatedButton(
+                                  child: Text('Add product'),
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Colors.orange,
+                                  ),
+                                  onPressed: () {})
+                            ])
+                      ],
+                    )),
+              )
+            ]));
   }
 }
