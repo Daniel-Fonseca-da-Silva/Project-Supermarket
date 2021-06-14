@@ -48,7 +48,8 @@ class MyHomePage extends StatelessWidget {
                     decoration: BoxDecoration(
                         border: Border.all(color: Colors.redAccent, width: 2)),
                     padding: EdgeInsets.all(10),
-                    child: Text(tr.value.toString(),
+                    child: Text(
+                      '\$ ${tr.value.toStringAsFixed(2)}',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
