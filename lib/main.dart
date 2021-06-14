@@ -34,7 +34,7 @@ class MyHomePage extends StatelessWidget {
           children: [
             Container(
               child: Card(
-                  color: Colors.limeAccent[100],
+                  color: Colors.white60,
                   child: Text('Date'),
                   elevation: 5),
             ),
@@ -49,15 +49,28 @@ class MyHomePage extends StatelessWidget {
                         border: Border.all(color: Colors.redAccent, width: 2)),
                     padding: EdgeInsets.all(10),
                     child: Text(tr.value.toString(),
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                        color: Colors.orange
-                      )
-                    ),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: Colors.orange)),
                   ),
                   Column(
-                    children: [Text(tr.name), Text(tr.date.toString())],
+                    children: [
+                      Text(
+                        tr.name,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: Colors.red),
+                      ),
+                      Text(
+                        tr.date.toString().substring(0,16),
+                        style: TextStyle(
+                            fontStyle: FontStyle.italic,
+                            fontSize: 14,
+                            color: Colors.grey),
+                      )
+                    ],
                   )
                 ]));
               }).toList(),
