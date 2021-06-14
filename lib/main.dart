@@ -40,7 +40,7 @@ class MyHomePage extends StatelessWidget {
             ),
             Column(
               children: _transactions.map((tr) {
-                // Converte transaction to map
+                // Convert transaction to map
                 return Card(
                     child: Row(children: [
                   Container(
@@ -48,7 +48,13 @@ class MyHomePage extends StatelessWidget {
                     decoration: BoxDecoration(
                         border: Border.all(color: Colors.redAccent, width: 2)),
                     padding: EdgeInsets.all(10),
-                    child: Text(tr.value.toString()),
+                    child: Text(tr.value.toString(),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        color: Colors.orange
+                      )
+                    ),
                   ),
                   Column(
                     children: [Text(tr.name), Text(tr.date.toString())],
