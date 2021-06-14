@@ -13,10 +13,8 @@ class Supermarket extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-
   // Variables
   final _transactions = {
-
     // Calling constructor of transaction
     Transaction(id: 'p1', name: 'Rice', value: 20.99, date: DateTime.now()),
 
@@ -42,13 +40,23 @@ class MyHomePage extends StatelessWidget {
           ),
           Column(
             children: _transactions.map((tr) {
+              // Converte transaction to map
               return Card(
-                child: Text(tr.name)
+                child: Row(
+                  children: [
+                    Container(
+                      child: Text(tr.value.toString()),
+                    ),
+                    Column(
+                      children: [Text(tr.name), Text(tr.date.toString())],
+                    )
+                  ]
+                )
               );
             }).toList(),
           )
         ],
-      ),
+      )
     );
   }
 }
